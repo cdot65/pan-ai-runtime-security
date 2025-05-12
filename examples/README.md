@@ -21,7 +21,7 @@ This directory contains examples demonstrating how to use the Palo Alto Networks
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- Python 3.12 or higher
 - Poetry (recommended) or pip
 - AI Security API Key from Palo Alto Networks
 - AI Security Profile Name or ID

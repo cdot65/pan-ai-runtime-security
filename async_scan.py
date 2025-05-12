@@ -70,7 +70,7 @@ def main():
 
     # Create sample content objects
     content1 = Content(
-        prompt="This is a test prompt with malicious URL",
+        prompt="This is a test prompt with 72zf6.rxqfd.com/i8xps1 url",
         response="This is a test response",
     )
 

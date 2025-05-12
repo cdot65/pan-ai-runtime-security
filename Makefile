@@ -25,7 +25,7 @@ help:
 # Setup python environment and install dependencies
 setup:
 	@echo "$(YELLOW)Setting up poetry environment...$(NC)"
-	poetry env use python3.9 || poetry env use python3.10 || poetry env use python3
+	poetry env use python3.12 || poetry env use python3
 	@echo "$(YELLOW)Installing dependencies...$(NC)"
 	poetry install --no-root
 	@echo "$(GREEN)Setup complete!$(NC)"
