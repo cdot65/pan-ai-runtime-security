@@ -48,13 +48,13 @@ This document outlines the prioritized tasks for upgrading our example repositor
    - [x] Create README.md with usage instructions
    - [x] Add sample output
 
-4. [ ] **Create example03-async-scan (examples/example03-async-scan/)**
-   - [ ] Refactor async_scan.py to new folder structure
-   - [ ] Update asynchronous scanning implementation
-   - [ ] Test batch processing with latest SDK
-   - [ ] Optimize for current best practices
-   - [ ] Create README.md with usage instructions
-   - [ ] Add sample output
+4. [x] **Create example03-async-scan (examples/example03-async-scan/)**
+   - [x] Refactor async_scan.py to new folder structure
+   - [x] Update asynchronous scanning implementation
+   - [x] Test batch processing with latest SDK
+   - [x] Optimize for current best practices
+   - [x] Create README.md with usage instructions
+   - [x] Add sample output
 
 5. [ ] **Create example04-concurrent (examples/example04-concurrent/)**
    - [ ] Refactor asyncio_concurrent.py to new folder structure

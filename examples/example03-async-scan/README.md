@@ -46,7 +46,7 @@ This example shows how to:
 Run the example script:
 
 ```bash
-python async_scan.py
+python main.py
 ```
 
 ## Key Concepts
@@ -81,27 +81,80 @@ Two methods are available to retrieve results:
 ## Sample Output
 
 ```
-Creating scanner...
-==============================================================
-Submitting asynchronous scan request...
-==============================================================
-Async scan response: AsyncScanResponse(scan_id='abc123', report_id='xyz789')
-Scan ID: abc123
-Report ID: xyz789
-==============================================================
-Querying results by scan ID...
-==============================================================
-Scan by IDs response: QueryByScanIdsResponse(scans=[ScanDetail(scan_id='abc123', scan_status='COMPLETED', created_at='2023-01-01T12:00:00Z', completed_at='2023-01-01T12:00:01Z')])
-==============================================================
-Querying results by report ID...
-==============================================================
-Report by IDs response: QueryByReportIdsResponse(reports=[ReportDetail(report_id='xyz789', profile_id='profile123', profile_name='default_profile', report_status='READY', results=[ScanResult(scan_id='abc123', tr_id='tx-001', req_id=1, category='security', action='block', prompt_detected=PromptDetected(url_cats=True, dlp=False, injection=False), response_detected=ResponseDetected(url_cats=False, dlp=False))])])
-==============================================================
+=== ASYNCHRONOUS SCAN AI SECURITY SDK EXAMPLE ===
+
+1. Initializing SDK...
+   SDK initialized with endpoint: https://service.api.aisecurity.paloaltonetworks.com
+
+2. Creating scanner...
+   Scanner created successfully
+
+3. Setting up AI profile...
+   Using profile name: default_profile
+
+4. Creating content for batch scanning...
+   Created 2 content items for batch processing
+
+5. Preparing async scan objects...
+   Prepared 2 async scan objects with unique request IDs
+
+6. Submitting asynchronous scan request...
+============================================================
+============================================================
+
+7. Async scan submission results:
+   Scan ID: 73a481bf-f2e1-4c29-8f24-e56d8c7a66b5
+   Report ID: 89c750ab-cf71-4e45-942a-b75e1f23d1c6
+   ✅ Async scan request submitted successfully
+
+8. Querying results by scan ID...
+============================================================
+============================================================
+
+   Scan Status Details:
+   - Scan ID: 73a481bf-f2e1-4c29-8f24-e56d8c7a66b5
+   - Status: COMPLETED
+   - Created: 2023-05-15T14:32:17Z
+   - Completed: 2023-05-15T14:32:19Z
+
+9. Querying results by report ID...
+============================================================
+============================================================
+
+   Report Details:
+   - Report ID: 89c750ab-cf71-4e45-942a-b75e1f23d1c6
+   - Profile: default_profile
+   - Status: READY
+
+   Individual Scan Results:
+   Request ID: 1, Transaction ID: async-tx-001
+   Category: security, Action: block
+   Prompt URL Detection: True
+   Prompt DLP Detection: False
+   Prompt Injection Detection: False
+   Response URL Detection: False
+   Response DLP Detection: False
+   ⚠️ Content blocked
+   ----------------------------------------
+   Request ID: 2, Transaction ID: async-tx-002
+   Category: none, Action: allow
+   Prompt URL Detection: False
+   Prompt DLP Detection: False
+   Prompt Injection Detection: False
+   Response URL Detection: False
+   Response DLP Detection: False
+   ✅ Content allowed
+   ----------------------------------------
+
+=== EXAMPLE COMPLETED ===
 ```
 
 In this example output:
-1. Two content items are submitted for asynchronous scanning
-2. The scan and report IDs are received
-3. Results are queried by scan ID to check status
+1. Two content items are submitted for asynchronous scanning:
+   - First item contains a malicious URL for testing detection
+   - Second item contains safe content
+2. The scan and report IDs are received after submission
+3. Results are queried by scan ID to check processing status
 4. Detailed results are obtained by querying the report ID
-5. The first content item was blocked due to a malicious URL
+5. The first content item was blocked due to the malicious URL
+6. The second content item was allowed as it contained no security issues
