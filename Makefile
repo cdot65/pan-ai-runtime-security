@@ -27,7 +27,7 @@ setup:
 	@echo "$(YELLOW)Setting up poetry environment...$(NC)"
 	poetry env use python3.9 || poetry env use python3.10 || poetry env use python3
 	@echo "$(YELLOW)Installing dependencies...$(NC)"
-	poetry install
+	poetry install --no-root
 	@echo "$(GREEN)Setup complete!$(NC)"
 	@echo "$(YELLOW)Virtual environment created in:$(NC) .venv/"
 	@echo "$(YELLOW)Activate environment with:$(NC) poetry shell"
@@ -35,7 +35,7 @@ setup:
 # Install development dependencies
 install-dev:
 	@echo "$(YELLOW)Installing development dependencies...$(NC)"
-	poetry install --with dev
+	poetry install --with dev --no-root
 	@echo "$(GREEN)Development dependencies installed!$(NC)"
 
 # Clean up build artifacts and cache directories
