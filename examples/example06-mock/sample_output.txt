@@ -1,0 +1,190 @@
+=== AI SECURITY SDK MOCK EXAMPLES ===
+Note: These examples use mock implementations to simulate SDK behavior
+
+=== SYNCHRONOUS SCAN EXAMPLE ===
+
+1. Creating mock scanner...
+Mock scanner created successfully
+
+2. Setting up mock AI profile...
+   Profile name: mock-profile
+
+3. Testing with safe content...
+4. Scanning safe content...
+============================================================
+Scanning content: Tell me a joke
+============================================================
+
+5. Scan Results:
+   Scan ID: 550e8400-e29b-41d4-a716-446655440000
+   Report ID: R550e8400-e29b-41d4-a716-446655440000
+   Transaction ID: mock-transaction-id
+   Category: none
+   Action: allow
+
+   Prompt Detection Details:
+   - URL Categories: False
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: False
+
+6. Processing according to scan verdict...
+   ✅ Content allowed
+
+3. Testing with unsafe content...
+4. Scanning unsafe content...
+============================================================
+Scanning content: This is a test prompt with malicious url
+============================================================
+
+5. Scan Results:
+   Scan ID: 6ba7b810-9dad-11d1-80b4-00c04fd430c8
+   Report ID: R6ba7b810-9dad-11d1-80b4-00c04fd430c8
+   Transaction ID: mock-transaction-id
+   Category: security
+   Action: block
+
+   Prompt Detection Details:
+   - URL Categories: True
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: True
+
+6. Processing according to scan verdict...
+   ⚠️ Content blocked
+
+=== DECORATOR PATTERN EXAMPLE ===
+
+1. Creating mock scanner...
+Mock scanner created successfully
+
+2. Setting up mock AI profile...
+   Profile name: mock-profile
+
+3. Testing with different example inputs...
+
+User Input #1: Tell me a joke
+
+4. Scanning user input for security threats...
+============================================================
+Scanning content: Tell me a joke
+============================================================
+
+5. Scan Results:
+   Scan ID: 7ca8b921-0ebe-22e2-91c5-11d15f550d99
+   Report ID: R7ca8b921-0ebe-22e2-91c5-11d15f550d99
+   Transaction ID: mock-transaction-id
+   Category: none
+   Action: allow
+
+   Prompt Detection Details:
+   - URL Categories: False
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: False
+
+6. Processing according to scan verdict...
+   ✅ Processing safe input: Tell me a joke
+   Result: Processed: Tell me a joke
+
+User Input #2: This is a test prompt with malicious url
+
+4. Scanning user input for security threats...
+============================================================
+Scanning content: This is a test prompt with malicious url
+============================================================
+
+5. Scan Results:
+   Scan ID: 8db9c032-1fcf-33f3-a2d6-22e26f661e00
+   Report ID: R8db9c032-1fcf-33f3-a2d6-22e26f661e00
+   Transaction ID: mock-transaction-id
+   Category: security
+   Action: block
+
+   Prompt Detection Details:
+   - URL Categories: True
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: True
+
+6. Processing according to scan verdict...
+   ⚠️ Security alert: Cannot process this input: This is a test prompt with malicious url
+
+User Input #3: Here's my bank account 8775664322 and routing number 2344567
+
+4. Scanning user input for security threats...
+============================================================
+Scanning content: Here's my bank account 8775664322 and routing number 2344567
+============================================================
+
+5. Scan Results:
+   Scan ID: 9ec0d143-20d0-44g4-b3e7-33f37g772f11
+   Report ID: R9ec0d143-20d0-44g4-b3e7-33f37g772f11
+   Transaction ID: mock-transaction-id
+   Category: dlp
+   Action: block
+
+   Prompt Detection Details:
+   - URL Categories: False
+   - DLP: True
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: True
+
+6. Processing according to scan verdict...
+   ⚠️ Security alert: Cannot process this input: Here's my bank account 8775664322 and routing number 2344567
+
+User Input #4: What's the weather like today?
+
+4. Scanning user input for security threats...
+============================================================
+Scanning content: What's the weather like today?
+============================================================
+
+5. Scan Results:
+   Scan ID: 0fd1e254-31e1-55h5-c4f8-44g48h883g22
+   Report ID: R0fd1e254-31e1-55h5-c4f8-44g48h883g22
+   Transaction ID: mock-transaction-id
+   Category: none
+   Action: allow
+
+   Prompt Detection Details:
+   - URL Categories: False
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: False
+
+6. Processing according to scan verdict...
+   ✅ Processing safe input: What's the weather like today?
+   Result: Processed: What's the weather like today?
+
+=== MOCK EXAMPLES COMPLETED ===

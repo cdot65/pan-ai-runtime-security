@@ -41,7 +41,7 @@ This example shows how to:
 Run the example script:
 
 ```bash
-python mock_example.py
+python main.py
 ```
 
 ## Key Concepts
