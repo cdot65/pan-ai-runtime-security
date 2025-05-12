@@ -1,0 +1,122 @@
+=== DECORATOR PATTERN AI SECURITY SDK EXAMPLE ===
+
+1. Initializing the AI Security SDK...
+   SDK initialized with endpoint: https://service.api.aisecurity.paloaltonetworks.com
+
+2. Creating scanner...
+   Scanner created successfully
+
+3. Setting up AI profile...
+   Using profile name: default_profile
+
+User Input #1: Tell me a joke
+
+4. Scanning user input for security threats...
+============================================================
+============================================================
+
+5. Scan Results:
+   Scan ID: 89ab12cd-34ef-5678-90gh-ij12kl34mn56
+   Report ID: R89ab12cd-34ef-5678-90gh-ij12kl34mn56
+   Transaction ID: auto-gen
+   Category: none
+   Action: allow
+
+   Prompt Detection Details:
+   - URL Categories: False
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: False
+
+6. Processing according to scan verdict...
+   ✅ Processing safe input: Tell me a joke
+   Result: Processed: Tell me a joke
+
+User Input #2: This is a test prompt with 72zf6.rxqfd.com/i8xps1 URL that should be detected
+
+4. Scanning user input for security threats...
+============================================================
+============================================================
+
+5. Scan Results:
+   Scan ID: 90gh12ij-34kl-5678-90mn-op12qr34st56
+   Report ID: R90gh12ij-34kl-5678-90mn-op12qr34st56
+   Transaction ID: auto-gen
+   Category: security
+   Action: block
+
+   Prompt Detection Details:
+   - URL Categories: True
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: True
+
+6. Processing according to scan verdict...
+   ⚠️ Security alert: Cannot process this input: This is a test prompt with 72zf6.rxqfd.com/i8xps1 URL that should be detected
+
+User Input #3: Here's my bank account 8775664322 and routing number 2344567
+
+4. Scanning user input for security threats...
+============================================================
+============================================================
+
+5. Scan Results:
+   Scan ID: ab12cd34-56ef-78gh-90ij-kl12mn34op56
+   Report ID: Rab12cd34-56ef-78gh-90ij-kl12mn34op56
+   Transaction ID: auto-gen
+   Category: dlp
+   Action: block
+
+   Prompt Detection Details:
+   - URL Categories: False
+   - DLP: True
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: True
+
+6. Processing according to scan verdict...
+   ⚠️ Security alert: Cannot process this input: Here's my bank account 8775664322 and routing number 2344567
+
+User Input #4: What's the weather like today?
+
+4. Scanning user input for security threats...
+============================================================
+============================================================
+
+5. Scan Results:
+   Scan ID: cd34ef56-78gh-90ij-12kl-mn34op56qr78
+   Report ID: Rcd34ef56-78gh-90ij-12kl-mn34op56qr78
+   Transaction ID: auto-gen
+   Category: none
+   Action: allow
+
+   Prompt Detection Details:
+   - URL Categories: False
+   - DLP: False
+   - Injection: False
+
+   Response Detection Details:
+   - URL Categories: False
+   - DLP: False
+
+   Is blocked: False
+
+6. Processing according to scan verdict...
+   ✅ Processing safe input: What's the weather like today?
+   Result: Processed: What's the weather like today?
+
+=== EXAMPLE COMPLETED ===

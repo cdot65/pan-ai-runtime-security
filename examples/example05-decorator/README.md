@@ -48,7 +48,7 @@ This example shows how to:
 Run the example script:
 
 ```bash
-python decorator_example.py
+python main.py
 ```
 
 ## Key Concepts
