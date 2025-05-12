@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 """
-Utility Functions for AI Security SDK Examples
-This module provides common utility functions used across the example scripts.
+Utility Functions for AI Security SDK Basic Example
+This module provides utility functions for the basic example script.
 """
 
 import os
 import sys
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 from dotenv import load_dotenv
 
 
-def load_environment() -> Dict[str, Optional[str]]:
+def load_environment() -> dict[str, str | None]:
     """
     Load environment variables from .env file
 
     Returns:
         dict: Environment configuration including API credentials
     """
-    # First try to load from current directory
+    # First try to load from the current directory
     env_path = Path(".") / ".env"
     if env_path.exists():
         load_dotenv(dotenv_path=env_path)
@@ -30,15 +30,9 @@ def load_environment() -> Dict[str, Optional[str]]:
         if env_path.exists():
             load_dotenv(dotenv_path=env_path)
         else:
-            # Try parent directory (for shared environment)
-            parent_dir = script_dir.parent.absolute()
-            env_path = parent_dir / ".env"
-            if env_path.exists():
-                load_dotenv(dotenv_path=env_path)
-            else:
-                print("No .env file found in current or parent directories")
-                print("Please copy .env.example to .env and add your credentials")
-                sys.exit(1)
+            print("No .env file found in current directory or script directory")
+            print("Please copy .env.example to .env and add your credentials")
+            sys.exit(1)
 
     # Get credentials from environment variables with fallbacks
     api_key = os.environ.get("PANW_AI_SEC_API_KEY", None)
@@ -64,33 +58,6 @@ def load_environment() -> Dict[str, Optional[str]]:
         "profile_id": profile_id,
         "log_level": log_level,
     }
-
-
-def get_example_contents() -> list:
-    """
-    Get a list of example content for testing
-
-    Returns:
-        list: Sample content items with prompts and responses
-    """
-    return [
-        {
-            "prompt": "Tell me a joke",
-            "response": "Why did the chicken cross the road? To get to the other side!",
-        },
-        {
-            "prompt": "This is a test prompt with 72zf6.rxqfd.com/i8xps1 URL",
-            "response": "This is a test response",
-        },
-        {
-            "prompt": "Normal request about weather",
-            "response": "The weather forecast shows sunny conditions.",
-        },
-        {
-            "prompt": "Secret bank account 8775664322 routing number 2344567",
-            "response": "I cannot process requests with sensitive information.",
-        },
-    ]
 
 
 def print_scan_result_summary(scan_response: Any) -> None:

@@ -16,8 +16,9 @@ help:
 	@echo "  $(GREEN)setup$(NC)        Setup poetry virtual environment and install dependencies"
 	@echo "  $(GREEN)install-dev$(NC)  Install development dependencies"
 	@echo "  $(GREEN)clean$(NC)        Remove build artifacts and cache directories"
-	@echo "  $(GREEN)lint$(NC)         Run linting checks with flake8 and ruff"
-	@echo "  $(GREEN)format$(NC)       Format code with ruff"
+	@echo "  $(GREEN)lint$(NC)         Run linting checks with flake8, ruff, and isort"
+	@echo "  $(GREEN)format$(NC)       Format code with ruff and isort"
+	@echo "  $(GREEN)sort-imports$(NC) Sort imports with isort"
 	@echo "  $(GREEN)type-check$(NC)   Run mypy for type checking"
 	@echo "  $(GREEN)test$(NC)         Run tests with pytest"
 	@echo "  $(GREEN)all$(NC)          Run lint, type-check, and test"
@@ -59,13 +60,23 @@ lint:
 	poetry run flake8 examples
 	@echo "$(YELLOW)Running ruff lint...$(NC)"
 	poetry run ruff check examples
+	@echo "$(YELLOW)Running isort check...$(NC)"
+	poetry run isort --check examples
 	@echo "$(GREEN)Linting complete!$(NC)"
 
 # Format code
 format:
 	@echo "$(YELLOW)Formatting code with ruff...$(NC)"
 	poetry run ruff format examples
+	@echo "$(YELLOW)Formatting imports with isort...$(NC)"
+	poetry run isort examples
 	@echo "$(GREEN)Formatting complete!$(NC)"
+
+# Sort imports
+sort-imports:
+	@echo "$(YELLOW)Sorting imports with isort...$(NC)"
+	poetry run isort examples
+	@echo "$(GREEN)Imports sorted!$(NC)"
 
 # Type checking
 type-check:

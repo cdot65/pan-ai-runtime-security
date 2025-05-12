@@ -2,15 +2,20 @@
 """
 Tests for the shared utility functions
 """
+
 import os
 import sys
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from utils import get_example_contents, print_scan_result_summary, print_detection_summary
+from utils import (  # noqa: E402
+    get_example_contents,
+    print_detection_summary,
+    print_scan_result_summary,
+)
 
 
 class TestUtils(unittest.TestCase):
@@ -34,23 +39,23 @@ class TestUtils(unittest.TestCase):
         mock_response.tr_id = "test-transaction-id"
         mock_response.category = "test-category"
         mock_response.action = "allow"
-        
+
         # Mock detection objects
         mock_prompt_detected = MagicMock()
         mock_prompt_detected.url_cats = False
         mock_prompt_detected.dlp = False
         mock_prompt_detected.injection = False
-        
+
         mock_response_detected = MagicMock()
         mock_response_detected.url_cats = False
         mock_response_detected.dlp = False
-        
+
         mock_response.prompt_detected = mock_prompt_detected
         mock_response.response_detected = mock_response_detected
-        
+
         # Call the function
         print_scan_result_summary(mock_response)
-        
+
         # Verify print was called with expected arguments
         mock_print.assert_any_call("Scan ID: test-scan-id")
         mock_print.assert_any_call("Report ID: test-report-id")
@@ -67,19 +72,19 @@ class TestUtils(unittest.TestCase):
         mock_detection.url_cats = True
         mock_detection.dlp = True
         mock_detection.injection = True
-        
+
         # Call the function for prompt
         print_detection_summary("Prompt", mock_detection)
-        
+
         # Verify print was called with expected arguments
         mock_print.assert_called_with("Prompt detected issues: URL categories, DLP, Injection")
-        
+
         # Reset mock
         mock_print.reset_mock()
-        
+
         # Call the function for response (should not include injection)
         print_detection_summary("Response", mock_detection)
-        
+
         # Verify print was called with expected arguments
         mock_print.assert_called_with("Response detected issues: URL categories, DLP")
 
