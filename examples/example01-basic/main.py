@@ -9,8 +9,10 @@ AI Security SDK, including initialization, profile setup, and synchronous scanni
 import aisecurity
 from aisecurity.generated_openapi_client import Metadata
 from aisecurity.generated_openapi_client.models.ai_profile import AiProfile
+
+# IMPORTANT: For traditional (non-asyncio), import Scanner from aisecurity.scan.inline.scanner
+from aisecurity.scan.inline.scanner import Scanner
 from aisecurity.scan.models.content import Content
-from aisecurity.scan.sync.scanner import Scanner
 
 # Import local utilities
 from utils import load_environment, print_scan_result_summary

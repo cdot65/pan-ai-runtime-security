@@ -114,6 +114,26 @@ The example script demonstrates the following steps:
 
 ## Key Concepts
 
+### Import Patterns
+
+One of the most important aspects of using the SDK is understanding the correct import patterns:
+
+```python
+# Core SDK initialization
+import aisecurity
+
+# Import models from the OpenAPI client
+from aisecurity.generated_openapi_client import Metadata
+from aisecurity.generated_openapi_client.models.ai_profile import AiProfile
+
+# Import the scanner from the inline module (not sync!)
+# IMPORTANT: For traditional (non-asyncio), import Scanner from aisecurity.scan.inline.scanner
+from aisecurity.scan.inline.scanner import Scanner
+
+# Import content model
+from aisecurity.scan.models.content import Content
+```
+
 ### SDK Initialization
 
 The SDK needs to be initialized with your API key and optionally a custom API endpoint:
@@ -177,7 +197,7 @@ The scan response contains detailed information about the security scan:
    Scanner created successfully
 
 3. Setting up AI profile...
-   Using profile name: default_profile
+   Using profile name: Demo-API-AI-Sec-Profile
 
 4. Creating content for scanning...
    Content created with test data
@@ -190,10 +210,10 @@ The scan response contains detailed information about the security scan:
 ============================================================
 
 7. Scan result summary:
-Scan ID: abc123-def456-ghi789
-Report ID: jkl012-mno345-pqr678
+Scan ID: 78e19fb3-0c5a-4569-8ecc-e5ee366ac024
+Report ID: R78e19fb3-0c5a-4569-8ecc-e5ee366ac024
 Transaction ID: example-tx-001
-Category: security
+Category: malicious
 Action: block
 Prompt detected issues: URL categories
 No issues detected in response
@@ -202,4 +222,4 @@ No issues detected in response
 === EXAMPLE COMPLETED ===
 ```
 
-In this example output, a malicious URL was detected in the prompt, resulting in the content being blocked.
+In this example output, a malicious URL (`72zf6.rxqfd.com/i8xps1`) was detected in the prompt, resulting in the content being blocked. The scan returns a unique scan ID and report ID for tracking and auditing purposes.
