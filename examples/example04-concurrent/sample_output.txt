@@ -1,0 +1,80 @@
+=== ASYNCIO CONCURRENT AI SECURITY SDK EXAMPLE ===
+
+1. Initializing SDK...
+   SDK initialized with endpoint: https://service.api.aisecurity.paloaltonetworks.com
+
+2. Creating scanner...
+   Scanner created successfully
+
+3. Setting up AI profile...
+   Using profile name: default_profile
+
+4. Creating content for batch scanning...
+   Created 2 content items for batch processing
+
+5. Preparing async scan objects...
+   Prepared 2 async scan objects with unique request IDs
+
+6. Running concurrent operations...
+============================================================
+============================================================
+
+7. Synchronous scan results:
+   Scan ID: a12bc3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p
+   Report ID: Ra12bc3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p
+   Transaction ID: concurrent-tx-001
+   Action: Block
+   ⚠️ Content blocked
+
+8. Asynchronous scan results:
+   Scan ID: 09412e04-e8da-4a20-a1eb-edce0f062d5c
+   Report ID: R09412e04-e8da-4a20-a1eb-edce0f062d5c
+   ✅ Async scan request submitted successfully
+
+9. Querying for additional scan results...
+============================================================
+============================================================
+
+   Waiting 10 seconds before retry 1/2...
+   Retrying query for scan status...
+
+   Scan Status Details:
+   - Scan ID: 09412e04-e8da-4a20-a1eb-edce0f062d5c
+   - Status: COMPLETED
+   - Created: 2023-05-15T14:32:17Z
+   - Completed: 2023-05-15T14:32:19Z
+
+10. Querying for detailed report...
+============================================================
+============================================================
+
+   Waiting 10 seconds before retry 1/2...
+   Retrying query for report results...
+
+   Waiting 10 seconds before retry 2/2...
+   Retrying query for report results...
+
+   Report Details:
+   - Report ID: R09412e04-e8da-4a20-a1eb-edce0f062d5c
+   - Profile: Demo-API-AI-Sec-Profile
+   - Status: Processing
+
+   Individual Scan Results for Request ID: 1, Transaction ID: async-tx-001
+   Prompt Verdict: Malicious, Action: Block
+   Response Verdict: Benign, Action: Allow
+
+   Malicious Detection Details:
+   - In prompt, uf service detected threat, action: block
+     URL: 72zf6.rxqfd.com/i8xps1, Categories: malware
+
+   ⚠️ Content blocked
+   ----------------------------------------
+
+   Individual Scan Results for Request ID: 2, Transaction ID: async-tx-002
+   Prompt Verdict: Benign, Action: Allow
+   Response Verdict: Benign, Action: Allow
+
+   ✅ Content allowed
+   ----------------------------------------
+
+=== EXAMPLE COMPLETED ===

@@ -46,7 +46,7 @@ This example shows how to:
 Run the example script:
 
 ```bash
-python asyncio_concurrent.py
+python main.py
 ```
 
 ## Key Concepts
