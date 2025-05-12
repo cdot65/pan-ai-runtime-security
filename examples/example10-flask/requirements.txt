@@ -1,0 +1,3 @@
+pan-aisecurity==0.4.0.4
+python-dotenv>=1.0.0
+flask>=2.2.0
