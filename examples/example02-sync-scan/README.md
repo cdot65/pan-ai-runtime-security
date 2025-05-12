@@ -45,7 +45,7 @@ This example shows how to:
 Run the example script:
 
 ```bash
-python sync_scan.py
+python main.py
 ```
 
 ## Key Concepts
@@ -81,19 +81,39 @@ The scan response includes:
 ## Sample Output
 
 ```
-Creating scanner...
-==============================================================
-Invoking synchronous scan...
-==============================================================
-Synchronous scan response: ScanResponse(scan_id='abc123', report_id='xyz789', tr_id='1234', profile_id='profile123', profile_name='default_profile', category='security', action='block', prompt_detected=PromptDetected(url_cats=True, dlp=False, injection=False), response_detected=ResponseDetected(url_cats=False, dlp=False))
-==============================================================
-Scan ID: abc123
+=== SYNCHRONOUS SCAN AI SECURITY SDK EXAMPLE ===
+
+1. Initializing SDK...
+   SDK initialized with endpoint: https://service.api.aisecurity.paloaltonetworks.com
+
+2. Creating scanner...
+   Scanner created successfully
+
+3. Setting up AI profile...
+   Using profile name: default
+
+4. Creating content for scanning...
+   Content created with test data (including malicious URL)
+
+5. Setting up optional metadata...
+   Metadata configured
+
+6. Performing synchronous scan...
+============================================================
+============================================================
+
+7. Detailed scan results:
+Scan ID: abc123def456
 Report ID: xyz789
-Transaction ID: 1234
+Transaction ID: sync-scan-example-001
 Category: security
 Action: block
-Prompt Detection: URL: True, DLP: False, Injection: False
-Response Detection: URL: False, DLP: False
+Prompt URL Detection: True
+Prompt DLP Detection: False
+Prompt Injection Detection: False
+Response URL Detection: False
+Response DLP Detection: False
+⚠️ Content blocked
 ```
 
-In this example output, the scan detected a malicious URL in the prompt, resulting in the content being blocked.
+In this example output, the scan detected a malicious URL in the prompt (the test domain `72zf6.rxqfd.com/i8xps1`), resulting in the content being blocked. The detailed scan results show which security policies triggered the block action.

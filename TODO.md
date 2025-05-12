@@ -40,13 +40,13 @@ This document outlines the prioritized tasks for upgrading our example repositor
    - [ ] Create README.md with usage instructions
    - [ ] Add sample output
 
-3. [ ] **Create example02-sync-scan (examples/example02-sync-scan/)**
-   - [ ] Refactor sync_scan.py to new folder structure
-   - [ ] Update synchronous scanning implementation
-   - [ ] Ensure compatibility with latest SDK API
-   - [ ] Add comprehensive error handling
-   - [ ] Create README.md with usage instructions
-   - [ ] Add sample output
+3. [x] **Create example02-sync-scan (examples/example02-sync-scan/)**
+   - [x] Refactor sync_scan.py to new folder structure
+   - [x] Update synchronous scanning implementation
+   - [x] Ensure compatibility with latest SDK API
+   - [x] Add comprehensive error handling
+   - [x] Create README.md with usage instructions
+   - [x] Add sample output
 
 4. [ ] **Create example03-async-scan (examples/example03-async-scan/)**
    - [ ] Refactor async_scan.py to new folder structure

@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-Basic Example of AI Security SDK Usage
-This script demonstrates the basic usage patterns for the Palo Alto Networks
-AI Security SDK, including initialization, profile setup, and synchronous scanning.
+Synchronous Scan Example for AI Security SDK
+This script demonstrates how to use the synchronous scan functionality
+to evaluate content against security policies.
 """
+
+# Standard library imports
+import logging
 
 # Import SDK modules
 import aisecurity
@@ -15,15 +18,18 @@ from aisecurity.scan.inline.scanner import Scanner
 from aisecurity.scan.models.content import Content
 
 # Import local utilities
-from utils import load_environment, print_scan_result_summary
+from utils import load_environment, print_detailed_scan_result
 
 
 def main():
     """Main execution function"""
-    print("=== BASIC AI SECURITY SDK EXAMPLE ===\n")
+    print("=== SYNCHRONOUS SCAN AI SECURITY SDK EXAMPLE ===\n")
 
     # Load environment variables
     env = load_environment()
+
+    # Configure logging based on an environment variable
+    logging.basicConfig(level=getattr(logging, env["log_level"]))
 
     print("1. Initializing SDK...")
     # Initialize the SDK with the API key and endpoint
@@ -45,28 +51,37 @@ def main():
         print(f"   Using profile name: {env['profile_name']}")
 
     print("\n4. Creating content for scanning...")
-    # Create a content object with test data
+    # Create a content object with test data containing a malicious URL
     content = Content(
-        prompt="This is a test prompt with 72zf6.rxqfd.com/i8xps1 URL",
-        response="This is a test response",
+        prompt="This is a test prompt with 72zf6.rxqfd.com/i8xps1 URL that should be detected",
+        response="This is a test response without any malicious content",
     )
-    print("   Content created with test data")
+    print("   Content created with test data (including malicious URL)")
 
     print("\n5. Setting up optional metadata...")
     # Optional parameters for the scan API
-    tr_id = "example-tx-001"  # Transaction ID for correlation
-    metadata = Metadata(app_name="basic_example", app_user="example_user", ai_model="ChatGippity",)
+    tr_id = "sync-scan-example-001"  # Transaction ID for correlation
+    metadata = Metadata(
+        app_name="ai_security_sync_example",
+        app_user="example_user",
+        ai_model="example_model"
+    )
     print("   Metadata configured")
 
     print("\n6. Performing synchronous scan...")
     print("=" * 60)
-    # Perform the scan with all parameters
-    scan_response = scanner.sync_scan(ai_profile=ai_profile, content=content, tr_id=tr_id, metadata=metadata,)
+    # Perform the synchronous scan with all parameters
+    scan_response = scanner.sync_scan(
+        ai_profile=ai_profile,
+        content=content,
+        tr_id=tr_id,
+        metadata=metadata
+    )
     print("=" * 60)
 
-    print("\n7. Scan result summary:")
+    print("\n7. Detailed scan results:")
     # Print detailed scan results
-    print_scan_result_summary(scan_response)
+    print_detailed_scan_result(scan_response)
 
     print("\n=== EXAMPLE COMPLETED ===")
 

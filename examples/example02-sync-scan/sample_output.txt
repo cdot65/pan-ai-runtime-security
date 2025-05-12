@@ -1,0 +1,35 @@
+=== SYNCHRONOUS SCAN AI SECURITY SDK EXAMPLE ===
+
+1. Initializing SDK...
+   SDK initialized with endpoint: https://service.api.aisecurity.paloaltonetworks.com
+
+2. Creating scanner...
+   Scanner created successfully
+
+3. Setting up AI profile...
+   Using profile name: default_profile
+
+4. Creating content for scanning...
+   Content created with test data (including malicious URL)
+
+5. Setting up optional metadata...
+   Metadata configured
+
+6. Performing synchronous scan...
+============================================================
+============================================================
+
+7. Detailed scan results:
+Scan ID: ad781bcf-a5f3-4c09-9f14-e46d8c7a99b1
+Report ID: 93c850ab-cf71-4e45-942a-b75e1f23d1c6
+Transaction ID: sync-scan-example-001
+Category: security
+Action: block
+Prompt URL Detection: True
+Prompt DLP Detection: False
+Prompt Injection Detection: False
+Response URL Detection: False
+Response DLP Detection: False
+⚠️ Content blocked
+
+=== EXAMPLE COMPLETED ===
