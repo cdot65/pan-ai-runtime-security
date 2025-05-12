@@ -3,6 +3,15 @@
 Decorator Pattern Example for AI Security SDK
 This script demonstrates how to use the decorator pattern to automatically
 scan user inputs for security threats before processing them.
+
+Required Environment Variables:
+- PANW_AI_SEC_API_KEY: Your Palo Alto Networks AI Security API key
+- At least one of the following profile identifiers:
+  - DEMO_AI_PROFILE_NAME: The name of your AI security profile
+  - DEMO_AI_PROFILE_ID: The ID of your AI security profile
+
+Optional Environment Variables:
+- PANW_AI_SEC_API_ENDPOINT: The API endpoint URL (defaults to Palo Alto Networks cloud endpoint)
 """
 import os
 import sys
@@ -51,12 +60,13 @@ def load_environment():
     }
 
 
-def ai_runtime_init(profile_name, api_key, api_endpoint):
+def ai_runtime_init(profile_id=None, profile_name=None, api_key=None, api_endpoint=None):
     """
     Initialize the AI Runtime Security SDK
 
     Args:
-        profile_name (str): The AI security profile name
+        profile_id (str, optional): The AI security profile ID
+        profile_name (str, optional): The AI security profile name
         api_key (str): The API key for authentication
         api_endpoint (str): The API endpoint URL
 
@@ -64,9 +74,19 @@ def ai_runtime_init(profile_name, api_key, api_endpoint):
         dict: Configuration dictionary with scanner and profile
     """
     aisecurity.init(api_key=api_key, api_endpoint=api_endpoint)
+    
+    # Create AI profile with either ID or name (at least one must be provided)
+    if profile_id:
+        ai_security_profile = AiProfile(profile_id=profile_id)
+    elif profile_name:
+        ai_security_profile = AiProfile(profile_name=profile_name)
+    else:
+        # Use a default profile if none provided
+        ai_security_profile = AiProfile(profile_name="default_profile")
+        
     return {
         "scanner": Scanner(),
-        "ai_security_profile": AiProfile(profile_name=profile_name),
+        "ai_security_profile": ai_security_profile,
     }
 
 
@@ -107,7 +127,18 @@ def check_user_content(ai_runtime_profile, error_func=None, debug=False):
             except Exception as e:
                 if debug:
                     print(f"Exception: {e}")
+                # If we can't reach the API, default to safe behavior in dev environments
+                # In production, you might want to block by default
                 is_blocked = True
+                
+                # Extract the meaningful part of the error message
+                error_message = str(e)
+                if "NameResolutionError" in error_message:
+                    print("⚠️ Could not connect to AI Security API - check network connection and API endpoint")
+                elif "Invalid API key" in error_message:
+                    print("⚠️ Invalid API key - check your PANW_AI_SEC_API_KEY environment variable")
+                elif "neither profile ID nor profile name is present" in error_message:
+                    print("⚠️ Missing profile configuration - set either DEMO_AI_PROFILE_ID or DEMO_AI_PROFILE_NAME")
 
             if is_blocked and error_func:
                 return error_func(*args, **kwargs)
@@ -135,6 +166,7 @@ def main():
 
     # Initialize the AI runtime profile
     ai_runtime_profile = ai_runtime_init(
+        profile_id=env["profile_id"],
         profile_name=env["profile_name"],
         api_key=env["api_key"],
         api_endpoint=env["api_endpoint"],

@@ -172,7 +172,22 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Project specific
+/.idea/
 /.idea/aisecurity.iml
-/aisecurity-1.1.0-py3-none-any.whl
+/aisecurity-*.whl
 /CLAUDE.md
-/.idea
+**/.claude/settings.local.json
+
+# Local .env files in example directories
+examples/**/.env
+
+# VS Code
+.vscode/
+
+# Local notes and scratch files
+notes/
+scratch/
+*.scratch
+*.notes
