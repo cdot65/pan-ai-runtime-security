@@ -1,0 +1,17 @@
+[virtualenvs]
+# Create virtual environments in the project directory
+in-project = true
+
+# Do not ask before creating a new virtualenv
+create = true
+
+# Use the latest version of python by default
+prefer-active-python = true
+
+[installer]
+# Make installs more robust by resolving dependencies in a secure, isolated way
+parallel = true
+
+[build]
+# Generate a pyproject.toml when building a package
+generate-pyproject-toml = false

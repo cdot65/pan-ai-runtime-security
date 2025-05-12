@@ -29,6 +29,7 @@ setup:
 	@echo "$(YELLOW)Installing dependencies...$(NC)"
 	poetry install
 	@echo "$(GREEN)Setup complete!$(NC)"
+	@echo "$(YELLOW)Virtual environment created in:$(NC) .venv/"
 	@echo "$(YELLOW)Activate environment with:$(NC) poetry shell"
 
 # Install development dependencies

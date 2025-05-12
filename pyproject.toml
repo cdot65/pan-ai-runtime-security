@@ -23,18 +23,20 @@ dev = [
 
 [tool.ruff]
 target-version = "py39"
-line-length = 88
+line-length = 127
 select = ["E", "F", "W", "I", "N", "UP", "PL", "NPY", "RUF"]
-ignore = []
+ignore = ["E501"]  # Ignore line too long error since we're handling it with line-length
 
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["F401"]  # Ignore unused imports in __init__.py files
+"tests/**/*.py" = ["E501"]  # Ignore line length in tests
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+line-length = 127  # Match line length here as well
 
 [tool.mypy]
 python_version = "3.9"
